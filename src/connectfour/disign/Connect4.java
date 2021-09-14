@@ -2,7 +2,26 @@ package connectfour.disign;
 
 public class Connect4 {
 
+    private Board board;
+    private Turn turn;
+
+    public Connect4 (){
+        this.board = new Board();
+        this.turn = new Turn (this.board);
+    }
+
+    private void play (){
+        //escribir la parte inicial de la partida
+        do{
+            board.paint();
+            turn.play();
+        } while (!connect4);
+
+        //escribir estado final de la partida, turno ganador si lo hay
+    }
     public static void main (String[] arg){
-        System.out.println("Hello World!");
+
+        new Connect4().play();
+        System.out.println("Game finished :) !");
     }
 }
