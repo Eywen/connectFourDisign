@@ -12,11 +12,13 @@ public class Connect4 {
 
     private void play (){
         //escribir la parte inicial de la partida
-        do{
+        board.paint();
+        turn.play();
+       /* do{
             board.paint();
             turn.play();
-        } while (!connect4());
-
+        } while (!connect4());*/
+        board.paint();
         //escribir estado final de la partida, turno ganador si lo hay
     }
 

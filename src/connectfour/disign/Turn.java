@@ -10,7 +10,15 @@ public class Turn {
     public Turn(Board board) {
         assert null != board;
         this.board = board;
-        players = new Player[NUMBER_PLAYERS];
+        this.players = new Player[NUMBER_PLAYERS];
+        this.inicializePlayer();
+    }
+
+    void inicializePlayer() {
+        for (int i = 0; i < NUMBER_PLAYERS; i++) {
+            this.players[i] = new Player(this.board, Color.getColor(i));
+        }
+        this.activePlayer = 0;
     }
 
     public void play() {

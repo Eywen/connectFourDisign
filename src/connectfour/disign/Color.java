@@ -9,12 +9,17 @@ enum Color {
         if (this.isNull()) {
             color = " ";
         }
-        System.out.println(color);
+        System.out.print(color);
         //Console.getInstance().write(color);
     }
 
     private boolean isNull() {
         return this.name().equals(Color.NULL);
+    }
+
+    static Color getColor(int colorIndex){
+        assert colorIndex >= 0 && colorIndex < Color.NULL.ordinal();
+        return Color.values()[colorIndex];
     }
 
 

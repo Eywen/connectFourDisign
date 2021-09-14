@@ -8,11 +8,14 @@ public class Board {
    // private Coordinate coordinate;
 
     public Board() {
-        //colors = new Color[coordinate.X_SIZE][coordinate.Y_SIZE];
-        //inicializar el tablero
-        for (int i = 0; i<Coordinate.Y_SIZE; i++){
-            for (int j = 0; i<Coordinate.X_SIZE; j++){
-                colors[i][j] = null;
+        this.colors = new Color[Coordinate.X_SIZE][Coordinate.Y_SIZE];       
+        this.boardInicialize();
+    }
+
+    private void boardInicialize () {
+        for (int i = 0; i < Coordinate.Y_SIZE; i++) {
+            for (int j = 0; j < Coordinate.X_SIZE; j++) {
+                this.colors[i][j] = Color.NULL;
             }
         }
     }
@@ -24,7 +27,9 @@ public class Board {
             for (int j = 0; j < Coordinate.Y_SIZE; j++) {
                 this.getColor(new Coordinate(i, j)).write();
                 //Message.VERTICAL_LINE.write();
+                System.out.print("  ");
             }
+            System.out.println("");
             //Console.getInstance().writeln();
         }
        // Message.HORIZONTAL_LINE.writeln();
@@ -36,6 +41,12 @@ public class Board {
     }
 
     public boolean isConnect4() {
-        
+
+        return false;
+    }
+
+    public void setToken(Coordinate coordinate, Color color) {
+        assert !coordinate.isNull();
+        this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
     }
 }
