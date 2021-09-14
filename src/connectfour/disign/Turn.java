@@ -13,6 +13,6 @@ public class Turn {
     }
 
     public void play() {
-
+        players[activePlayer].play(board);
     }
 }
