@@ -8,7 +8,6 @@ public class Turn {
     private int activePlayer;
 
     public Turn(Board board) {
-
         this.board = board;
         players = new Player[NUMBER_PLAYERS];
     }

@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e64dc2c-f525-4214-bea7-94230898f34f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/connectfour/disign/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connectfour/disign/Turn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/connectfour/connectfour/disign/Connect4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/connectfour/connectfour/disign/Connect4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connectfour/disign/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connectfour/disign/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/connectfour/disign/Connect4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connectfour/disign/Connect4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connectfour/disign/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connectfour/disign/Turn.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +101,7 @@
       <updated>1631114770835</updated>
       <workItem from="1631114773731" duration="6625000" />
       <workItem from="1631262622149" duration="76000" />
-      <workItem from="1631605331588" duration="2317000" />
+      <workItem from="1631605331588" duration="3975000" />
     </task>
     <servers />
   </component>

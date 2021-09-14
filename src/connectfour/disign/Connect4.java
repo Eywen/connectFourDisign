@@ -15,10 +15,15 @@ public class Connect4 {
         do{
             board.paint();
             turn.play();
-        } while (!connect4);
+        } while (!connect4());
 
         //escribir estado final de la partida, turno ganador si lo hay
     }
+
+    private boolean connect4() {
+        return board.isConnect4();
+    }
+
     public static void main (String[] arg){
 
         new Connect4().play();
