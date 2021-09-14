@@ -49,4 +49,14 @@ public class Board {
         assert !coordinate.isNull();
         this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
     }
+
+    public boolean verifyCoordinate(Coordinate coordinate) {
+        if (this.getColor(coordinate).equals(Color.NULL)){
+            if ((coordinate.getRow() != (Coordinate.X_SIZE - 1)) && ((coordinate.getRow() > (Coordinate.X_SIZE - 1)) || (coordinate.getRow() < 0) ||
+                    (this.colors[coordinate.getRow()+1][coordinate.getColumn()].equals(Color.NULL))) ){
+                return true;
+            }
+            return false;
+        }else return true;
+    }
 }

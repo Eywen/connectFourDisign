@@ -17,6 +17,9 @@ public class Player {
     public void play() {
         Coordinate coordinate;
         coordinate = this.getCoordinate();
+        boolean tokenError = board.verifyCoordinate(coordinate);
+        if (tokenError)
+            coordinate.reload();
         //Error error;
         /*do {
             coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
@@ -33,4 +36,6 @@ public class Player {
         //coordinate.read(message.toString());
         return coordinate;
     }
+
+
 }
