@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e64dc2c-f525-4214-bea7-94230898f34f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/connectfour/disign/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connectfour/disign/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connectfour/disign/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/connectfour/disign/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connectfour/disign/Turn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connectfour/disign/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connectfour/disign/Board.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <workItem from="1631114773731" duration="6625000" />
       <workItem from="1631262622149" duration="76000" />
       <workItem from="1631605331588" duration="3975000" />
-      <workItem from="1631617833213" duration="241000" />
+      <workItem from="1631617833213" duration="2663000" />
     </task>
     <servers />
   </component>
