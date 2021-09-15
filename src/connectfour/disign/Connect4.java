@@ -23,7 +23,7 @@ public class Connect4 {
     }
 
     private boolean connect4() {
-        return board.isConnect4();
+        return board.isConnect4(this.turn);
     }
 
     public static void main (String[] arg){

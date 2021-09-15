@@ -24,16 +24,20 @@ public class Turn {
     public void play() {
         players[activePlayer].play();
         //si no es fin de juego activo el sgt jugador
-       /* if (!this.board.isTicTacToe(this.getActiveColor())){
+        if (!this.board.isConnect4(this.getActiveColor())){
             this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
-        }*/
+        }
     }
 
    /* void writeWinner(){
         this.players[this.activePlayer].writeWinner();
     }*/
 
-    /*Color getActiveColor() {
+    Color getActiveColor() {
         return this.players[this.activePlayer].getColor();
-    }*/
+    }
+
+    public Player getActivePlayer() {
+        return this.players[activePlayer];
+    }
 }

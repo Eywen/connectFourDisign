@@ -7,6 +7,7 @@ public class Player {
     private Board board;
     private Color color;
     private int indexToken;
+    private Coordinate actualCoordinate;
 
     public Player(Board board, Color color) {
         this.board = board;
@@ -16,16 +17,14 @@ public class Player {
 
     public void play() {
         Coordinate coordinate;
-        coordinate = this.getCoordinate();
-        boolean tokenError = board.verifyCoordinate(coordinate);
-        if (tokenError)
-            coordinate.reload();
-        //Error error;
-        /*do {
-            coordinate = this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
-            error = this.getPutTokenError(coordinate);
-        } while (!error.isNull());*/
+        boolean tokenOk;
+        do {
+            coordinate = this.getCoordinate();
+            tokenOk = board.verifyCoordinate(coordinate);
+        } while (!tokenOk);
         this.board.setToken(coordinate, this.color);
+        this.actualCoordinate = coordinate;
+        this.color.setCoordinate(coordinate);
         this.indexToken++;
     }
 
@@ -37,5 +36,11 @@ public class Player {
         return coordinate;
     }
 
+    public Coordinate getActualCoordinate(){
+        return  this.actualCoordinate;
+    }
 
+    public Color getColor() {
+        return  this.color;
+    }
 }

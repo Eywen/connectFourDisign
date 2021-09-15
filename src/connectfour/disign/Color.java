@@ -4,6 +4,7 @@ enum Color {
 
     A, R, NULL;
 
+    private Coordinate lastCoordinateColor;
     void write() {
         String color = this.name();
         if (this.isNull()) {
@@ -13,7 +14,7 @@ enum Color {
         //Console.getInstance().write(color);
     }
 
-    private boolean isNull() {
+    public boolean isNull() {
         return this.name().equals(Color.NULL);
     }
 
@@ -23,4 +24,11 @@ enum Color {
     }
 
 
+    public void setCoordinate(Coordinate coordinate) {
+        this.lastCoordinateColor = coordinate;
+    }
+
+    public Coordinate getlastCoordinate(){
+        return this.lastCoordinateColor;
+    }
 }

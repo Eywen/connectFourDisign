@@ -30,13 +30,10 @@ public class Coordinate {
 
     public void read() {
         Scanner readScanner = new Scanner(System.in);
-        System.out.println("Introduzca la fila y columna en la que desea poner la ficha(X,Y). La parte alta del tablero es la fila : " + (X_SIZE-1) + " y la parte baja es la fila 0 :");
+        System.out.println("Introduzca la fila y columna en la que desea poner la ficha(X,Y). " );
+        System.out.println("Tenga en cuenta poner la ficha en la parte mas baja libre del tablero. La parte mas baja del tablero es la fila : " + (X_SIZE-1) +
+                ", la parte alta es la fila 0. Las columnas van de izquierda a derecha desde la 0 hasta la " + (Y_SIZE-1) + ": ");
         this.row = readScanner.nextInt();
         this.column = readScanner.nextInt();
-    }
-
-    public void reload() {
-        System.out.println("Debe poner la ficha en la parte baja del tablero.");
-        this.read();
     }
 }
