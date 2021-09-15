@@ -3,6 +3,7 @@ package connectfour.disign;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Board {
 
@@ -39,15 +40,35 @@ public class Board {
 
     public boolean isConnect4(Turn turn) {
         assert !turn.getActiveColor().isNull();
-        Map<String, Coordinate> colorAdjacentMap = this.getadjacent(turn.getActiveColor());
-        if (colorAdjacentMap.isEmpty()){
+        Map<String, Coordinate> coordinateAdjacentMap = this.getadjacent(turn.getActiveColor());
+        if (coordinateAdjacentMap.isEmpty()){
             return false;
         } else{
-            if (this.verifyHorizontalWinner(colorAdjacentMap) || this.verifyVerticalWinner(colorAdjacentMap)){
+            if (this.verifyWinner(coordinateAdjacentMap,turn.getActiveColor())){
                 return true;
             }
         }
         return false;
+    }
+
+    private boolean verifyWinner(Map<String, Coordinate> colorAdjacentMap, Color activeColor) {
+
+        for (Map.Entry<String, Coordinate> coordinateentrySet : colorAdjacentMap.entrySet()) {
+            if (null != coordinateentrySet.getKey()){
+                String coordinateKey = coordinateentrySet.getKey();
+                Coordinate coordinate = coordinateentrySet.getValue();
+                verifyHorizontalWinner(coordinateentrySet.getKey(),coordinateentrySet.getValue(),activeColor);
+            }
+
+        }
+    }
+
+    private void verifyHorizontalWinner(String direction, Coordinate coordinate, Color activeColor) {
+        if (direction.equals(Coordinate.NEXT_HORIZONTAL)){
+            this.getColor(coordinate).equals(activeColor)
+        }else if (direction.equals(Coordinate.PREVIOUS_HORIZONTAL)){
+
+        }
     }
 
     private Map<String,Coordinate> getadjacent(Color color) {
@@ -56,11 +77,12 @@ public class Board {
         assert color.getlastCoordinate().getRow()-1 < 0;
         assert color.getlastCoordinate().getColumn()-1 < 0;
         Map<String,Coordinate> adjacentCoordinateMap = new HashMap<>();
-        adjacentCoordinateMap.put(Coordinate.ACTUAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn()));
-        adjacentCoordinateMap.put(Coordinate.NEXT_HORIZONTAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn() + 1));
-        adjacentCoordinateMap.put(Coordinate.NEXT_VERTICAL,new Coordinate(color.getlastCoordinate().getRow()+1, color.getlastCoordinate().getColumn()));
-        adjacentCoordinateMap.put(Coordinate.PREVIOUS_HORIZONTAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn()-1));
-        adjacentCoordinateMap.put(Coordinate.PREVIOUS_VERTICAL,new Coordinate(color.getlastCoordinate().getRow()-1, color.getlastCoordinate().getColumn()));
+        Coordinate actualCoordinate = new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn());
+        adjacentCoordinateMap.put(Coordinate.ACTUAL,actualCoordinate);
+        adjacentCoordinateMap.put(Coordinate.NEXT_HORIZONTAL, actualCoordinate.getNextHorizontalCoordinate(color));
+        adjacentCoordinateMap.put(Coordinate.NEXT_VERTICAL, actualCoordinate.getNextVerticalCoordinate(color));
+        adjacentCoordinateMap.put(Coordinate.PREVIOUS_HORIZONTAL, actualCoordinate.getPreviosHorizontalCoordinate(color));
+        adjacentCoordinateMap.put(Coordinate.PREVIOUS_VERTICAL, actualCoordinate.getPreviosVerticalCoordinate(color));
         return adjacentCoordinateMap;
     }
 

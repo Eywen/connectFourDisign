@@ -41,4 +41,20 @@ public class Coordinate {
         this.row = readScanner.nextInt();
         this.column = readScanner.nextInt();
     }
+
+    public Coordinate getPreviosVerticalCoordinate(Color color) {
+        return new Coordinate(color.getlastCoordinate().getRow()-1, color.getlastCoordinate().getColumn());
+    }
+
+    public Coordinate getPreviosHorizontalCoordinate(Color color) {
+        return new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn()-1);
+    }
+
+    public Coordinate getNextVerticalCoordinate(Color color) {
+        return new Coordinate(color.getlastCoordinate().getRow()+1, color.getlastCoordinate().getColumn());
+    }
+
+    public Coordinate getNextHorizontalCoordinate(Color color) {
+        return new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn() + 1);
+    }
 }
