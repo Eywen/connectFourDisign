@@ -1,6 +1,8 @@
 package connectfour.disign;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Board {
 
@@ -37,17 +39,29 @@ public class Board {
 
     public boolean isConnect4(Turn turn) {
         assert !turn.getActiveColor().isNull();
-        List<Color> colorAdjacentList = getadjacent(turn.getActiveColor());
-        if (colorAdjacentList.isEmpty()){
+        Map<String, Coordinate> colorAdjacentMap = this.getadjacent(turn.getActiveColor());
+        if (colorAdjacentMap.isEmpty()){
             return false;
         } else{
-            //turn.getActivePlayer().getActualCoordinate();
-            Coordinate lastCoordinate = turn.getActiveColor().getlastCoordinate();
-            if (verifyHorizontalWinner(lastCoordinate) || verifyVerticalWinner){
+            if (this.verifyHorizontalWinner(colorAdjacentMap) || this.verifyVerticalWinner(colorAdjacentMap)){
                 return true;
             }
         }
         return false;
+    }
+
+    private Map<String,Coordinate> getadjacent(Color color) {
+        assert color.getlastCoordinate().getColumn() + 1 >= Coordinate.Y_SIZE;
+        assert color.getlastCoordinate().getRow() + 1 >= Coordinate.X_SIZE;
+        assert color.getlastCoordinate().getRow()-1 < 0;
+        assert color.getlastCoordinate().getColumn()-1 < 0;
+        Map<String,Coordinate> adjacentCoordinateMap = new HashMap<>();
+        adjacentCoordinateMap.put(Coordinate.ACTUAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn()));
+        adjacentCoordinateMap.put(Coordinate.NEXT_HORIZONTAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn() + 1));
+        adjacentCoordinateMap.put(Coordinate.NEXT_VERTICAL,new Coordinate(color.getlastCoordinate().getRow()+1, color.getlastCoordinate().getColumn()));
+        adjacentCoordinateMap.put(Coordinate.PREVIOUS_HORIZONTAL,new Coordinate(color.getlastCoordinate().getRow(), color.getlastCoordinate().getColumn()-1));
+        adjacentCoordinateMap.put(Coordinate.PREVIOUS_VERTICAL,new Coordinate(color.getlastCoordinate().getRow()-1, color.getlastCoordinate().getColumn()));
+        return adjacentCoordinateMap;
     }
 
     public void setToken(Coordinate coordinate, Color color) {

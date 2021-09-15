@@ -5,6 +5,11 @@ import java.util.Scanner;
 public class Coordinate {
     public static final int X_SIZE = 4;
     public static final int Y_SIZE = 4;
+    public static final String NEXT_HORIZONTAL = "NH";
+    public static final String NEXT_VERTICAL = "NV";
+    public static final String PREVIOUS_HORIZONTAL = "PH";
+    public static final String PREVIOUS_VERTICAL = "PV";
+    public static final String ACTUAL = "ACTUAL";
 
     private Integer row;
     private Integer column;
