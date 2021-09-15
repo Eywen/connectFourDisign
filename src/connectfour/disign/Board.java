@@ -58,6 +58,7 @@ public class Board {
                 String coordinateKey = coordinateentrySet.getKey();
                 Coordinate coordinate = coordinateentrySet.getValue();
                 verifyHorizontalWinner(coordinateentrySet.getKey(),coordinateentrySet.getValue(),activeColor);
+                verificar vertical
             }
 
         }
@@ -65,7 +66,11 @@ public class Board {
 
     private void verifyHorizontalWinner(String direction, Coordinate coordinate, Color activeColor) {
         if (direction.equals(Coordinate.NEXT_HORIZONTAL)){
-            this.getColor(coordinate).equals(activeColor)
+            for (1 a 4 ){
+                if (this.getColor(coordinate).equals(activeColor)) {
+                    coordinate.getNextHorizontalCoordinate(activeColor)
+                }
+            }
         }else if (direction.equals(Coordinate.PREVIOUS_HORIZONTAL)){
 
         }
