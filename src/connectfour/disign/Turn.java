@@ -23,15 +23,11 @@ public class Turn {
 
     public void play() {
         players[activePlayer].play();
-        //si no es fin de juego activo el sgt jugador
-        if (!this.board.isConnect4(this.getActiveColor())){
-            this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
-        }
     }
 
-   /* void writeWinner(){
-        this.players[this.activePlayer].writeWinner();
-    }*/
+    public void activeNextPlayer(){
+            this.activePlayer = (this.activePlayer+1) % Turn.NUMBER_PLAYERS;
+    }
 
     Color getActiveColor() {
         return this.players[this.activePlayer].getColor();

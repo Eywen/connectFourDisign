@@ -1,7 +1,5 @@
 package connectfour.disign;
 
-import java.util.Scanner;
-
 public class Player {
 
     private Board board;
@@ -29,15 +27,9 @@ public class Player {
     }
 
     private Coordinate getCoordinate(){
-        //assert message != null;
         Coordinate coordinate = new Coordinate();
         coordinate.read();
-        //coordinate.read(message.toString());
         return coordinate;
-    }
-
-    public Coordinate getActualCoordinate(){
-        return  this.actualCoordinate;
     }
 
     public Color getColor() {

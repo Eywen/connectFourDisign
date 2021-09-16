@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class Board {
 
+    private static final int NUM_TOKEN_WINNER = 4;
     private Color[][] colors;
    // private Coordinate coordinate;
 
@@ -52,29 +53,40 @@ public class Board {
     }
 
     private boolean verifyWinner(Map<String, Coordinate> colorAdjacentMap, Color activeColor) {
-
+        int i = 0;
+        boolean winner = false;
         for (Map.Entry<String, Coordinate> coordinateentrySet : colorAdjacentMap.entrySet()) {
-            if (null != coordinateentrySet.getKey()){
-                String coordinateKey = coordinateentrySet.getKey();
-                Coordinate coordinate = coordinateentrySet.getValue();
-                verifyHorizontalWinner(coordinateentrySet.getKey(),coordinateentrySet.getValue(),activeColor);
-                verificar vertical
+            assert null == coordinateentrySet.getKey();
+            if (coordinateentrySet.getKey().equals(Coordinate.NEXT_HORIZONTAL) && coordinateentrySet.getValue().getColumn() < Coordinate.Y_SIZE) {
+                winner =  verifyHorizontalNextWinner(coordinateentrySet.getValue(), activeColor);
+            } else  if (coordinateentrySet.getKey().equals(Coordinate.PREVIOUS_HORIZONTAL) && coordinateentrySet.getValue().getColumn() >= 0) {
+                winner = verifyHorizontalPreviousWinner(coordinateentrySet.getValue(),activeColor);
             }
-
         }
+        return winner;
     }
 
-    private void verifyHorizontalWinner(String direction, Coordinate coordinate, Color activeColor) {
-        if (direction.equals(Coordinate.NEXT_HORIZONTAL)){
-            for (1 a 4 ){
-                if (this.getColor(coordinate).equals(activeColor)) {
-                    coordinate.getNextHorizontalCoordinate(activeColor)
-                }
-            }
-        }else if (direction.equals(Coordinate.PREVIOUS_HORIZONTAL)){
-
+    private boolean verifyHorizontalNextWinner(Coordinate coordinate, Color activeColor) {
+        int numTokensWinner = 1;
+        while (numTokensWinner < NUM_TOKEN_WINNER) {
+            if (this.getColor(coordinate).equals(activeColor)) {
+                coordinate = coordinate.getNextHorizontalCoordinate(this.getColor(coordinate));
+            } else return false;
+            numTokensWinner++;
         }
+        return true;
     }
+     private boolean verifyHorizontalPreviousWinner(Coordinate coordinate, Color activeColor) {
+        int numTokensWinner = 3;
+        while (numTokensWinner > 0) {
+            if (this.getColor(coordinate).equals(activeColor)) {
+                coordinate = coordinate.getPreviosHorizontalCoordinate(this.getColor(coordinate));
+            } else return false;
+            numTokensWinner --;
+        }
+        return true;
+    }
+
 
     private Map<String,Coordinate> getadjacent(Color color) {
         assert color.getlastCoordinate().getColumn() + 1 >= Coordinate.Y_SIZE;

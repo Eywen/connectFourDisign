@@ -11,19 +11,23 @@ public class Connect4 {
     }
 
     private void play (){
-        //escribir la parte inicial de la partida
-        board.paint();
-        turn.play();
-       /* do{
+        do{
             board.paint();
             turn.play();
-        } while (!connect4());*/
+        } while (!this.connect4());
         board.paint();
-        //escribir estado final de la partida, turno ganador si lo hay
+        System.out.println("¡Ganador el Jugador de color :" + turn.getActiveColor() + "!");
     }
 
     private boolean connect4() {
-        return board.isConnect4(this.turn);
+        boolean connect4 = board.isConnect4(this.turn);
+        this.activeNextPlayer(connect4);
+        return connect4;
+    }
+
+    private void activeNextPlayer(boolean connect4){
+        if (!connect4)
+            turn.activeNextPlayer();
     }
 
     public static void main (String[] arg){
